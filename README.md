@@ -40,7 +40,7 @@ __Topic__: React JS
 __Dates__: May 14 - 31, 2018  
 __Time__:  
 Weekdays: 7:00 - 8:30 PM
-Weekends: 8:00 - 11:00 AM
+Weekends: 8:00 - 11:45 AM (15 minute break in between)
 
 ## How to join the meeting
 The training session are recorded using Zoom (https://zoom.us). If you are using Zoom for the first time you will be prompted to download Zoom when you open the meeting link in the browser. Do so and follow the steps in the wizard.
