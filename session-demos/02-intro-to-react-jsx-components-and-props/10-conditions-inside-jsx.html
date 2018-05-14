@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../../demos/js/react.development.js"></script>
+        <script src="../../demos/js/react-dom.development.js"></script>
+        <script src="../../demos/js/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">
+            function Message( props ) {
+                let el;
+                let { hide } = props;
+                if( hide ) {
+                    el = null;
+                } else {
+                    el = <h1>Hello, world</h1>;
+                }
+                return (
+                    <div>
+                        {el}
+                    </div>
+                );
+            }
+
+            // Exercise: Create a ShoppingList component that accepts a list of items (an array of objects each having name and quantity) and displays it in a list
+                // <ul>
+                //     <li>...<li>
+                //     .
+                //     .
+                //     .
+                // </ul>
+
+            // Just like we have used if..else above, use for loop to iterate and generate and array of React <li> elements - bind the react elements within <ul>
+            ReactDOM.render( <Message hide={true} />, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

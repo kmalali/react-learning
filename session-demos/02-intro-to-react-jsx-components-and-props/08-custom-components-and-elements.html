@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="text/babel">
+            /**
+             * This is a "functional component" in React
+             * 
+             * You can also define a custom component using a class
+             * 
+             * Props (equivalent of HTML attributes) can take literal values (string) or can take values from variables. For literal values use quotes (example tip="...") and for using variables in props, enclose within {} (example title={props.tip} )
+             */
+            function Message( props ) {
+                return (
+                    <h1 title={props.tip}>Hello world</h1>
+                );
+            }
+
+            function Panel( props ) {
+
+            }
+
+            let message = <Message tip="Introduction to React" />;
+
+            ReactDOM.render( message, document.getElementById( 'root' ) );
+
+            // title becomes panel heading
+            let panel = <Panel title="What is React?">
+                It is a JS library
+            </Panel>;
+
+            // ReactDOM.render( panel, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

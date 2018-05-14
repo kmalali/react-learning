@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Panel - with React (no JSX - only createElement())</title>
+        <link rel="stylesheet" href="./css/panel.css">
+        <script src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script>
+            /**
+             * We can use plain prop named "class" and not "className" here
+             */
+            let panel = React.createElement( 'div', { class: "panel" },
+                            React.createElement( 'div', { class: "panel-heading" }, "What is React?" ),
+                            React.createElement( 'div', { class: "panel-body" }, "It is a JS library, for building user interfaces, created by Facebook." )
+                        );
+
+            ReactDOM.render(
+                panel,
+                document.getElementById( 'root' )
+            );
+        </script>
+    </body>
+</html>

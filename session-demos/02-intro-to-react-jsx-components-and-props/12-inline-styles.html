@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Panel - with React (using JSX)</title>
+        <script src="../../demos/js/react.development.js"></script>
+        <script src="../../demos/js/react-dom.development.js"></script>
+        <script src="../../demos/js/babel.min.js"></script>
+        <link rel="stylesheet" href="./css/panel.css">
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+            let panelStyle = ;
+
+            function Panel( props ) {
+                const { title, children } = props;
+                return (
+                    <div style={{ border: '1px solid crimson', borderRadius: 5}}>
+                        <div className="panel-heading">
+                            {title}
+                        </div>
+                        <div className="panel-body">
+                            {children}
+                        </div>
+                    </div>
+                );
+            }
+
+            let panel = (
+                <Panel title="What is react?">
+                    It is a JS library for building SPAs
+                </Panel>
+            );
+
+            ReactDOM.render(
+                panel,
+                document.getElementById( 'root' )
+            );
+        </script>
+    </body>
+</html>

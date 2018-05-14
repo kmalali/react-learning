@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../../demos/js/react.development.js"></script>
+        <script src="../../demos/js/react-dom.development.js"></script>
+        <script src="../../demos/js/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">
+            // JSX expressions can be array - recollect we used {this.children} where this.children could be an array of childNodes
+            function ShoppingList( props ) {
+                let { items } = props;
+                
+                // let liElements = [];
+                // for( let i = 0; i < items.length; i++ ) {
+                //     liElements.push( <li>{items[i].name} - {items[i].quantity}</li> );
+                // }
+
+                // console.log( liElements ); // an array of React elements
+
+                // map takes as input an array and returns another array with one element per item in the original array
+                // [1, 2, 3, 4].map( n => n * n ); // returns [1, 4, 9, 16]
+                return (
+                    <ul>
+                        {/* using array map() method is the "declarartive" way to work with arrays */}
+                        {props.items.map(item => <li>{item.name} - {item.quantity}</li>)}
+                    </ul>
+                );
+            }
+
+            // Exercise: Create a ShoppingList component that accepts a list of items (an array of objects each having name and quantity) and displays it in a list
+                // <ul>
+                //     <li>...<li>
+                //     .
+                //     .
+                //     .
+                // </ul>
+
+              
+            // Just like we have used if..else above, use for loop to iterate and generate and array of React <li> elements - bind the react elements within <ul>
+            
+            let items = [
+                { name: 'Soap', quantity: 10 },
+                { name: 'Lays chips', quantity: 2 },
+                { name: 'Biscuits', quantity: 5 },
+            ]
+            let shoppingList = <ShoppingList items={items} />
+            
+            ReactDOM.render( shoppingList, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../../demos/js/react.development.js"></script>
+        <script src="../../demos/js/react-dom.development.js"></script>
+        <script src="../../demos/js/babel.min.js"></script>
+        <link rel="stylesheet" href="./css/panel.css">
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="text/babel">
+            // Exercise:
+            // 1. Implement this Timer component
+            // 2. Implement the Panel component as a class component
+
+            class Panel extends React.Component {
+                render() {
+                    const { title, children } = this.props;
+                    return (
+                        <div className="panel">
+                            <div className="panel-heading">
+                                {title}
+                            </div>
+                            <div className="panel-body">
+                                {children}
+                            </div>
+                        </div>
+                    );
+                }
+            }
+
+            // internallly new Panel(); will be called - this object contains all info (state) of the panel
+            ReactDOM.render(
+                <Panel title="How is class component different from a function component?">
+                    A function component simply returns an element. OTOH using the class component we create an instance of the class that is associated with the element returned by render.
+                </Panel>,
+                document.getElementById( 'root' )
+            );
+        </script>
+    </body>
+</html>

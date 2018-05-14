@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../../demos/js/react.development.js"></script>
+        <script src="../../demos/js/react-dom.development.js"></script>
+        <script src="../../demos/js/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="text/babel">
+            // Exercise:
+            // 1. Implement this Timer component
+            // 2. Implement the Panel component as a class component
+
+            // The props are set on the instance of the timer component
+            class Timer extends React.Component {
+                render() {
+                    let dateTime = (new Date()).toLocaleTimeString();
+                    return (<div>
+                        <span>{this.props.message}</span>
+                        Current time is <strong>{dateTime}</strong>
+                    </div>);
+                }
+            }
+
+            setInterval(
+                () => ReactDOM.render( <Timer message="IST" />, document.getElementById( 'root' ) ), 
+                1000
+            );
+        </script>
+    </body>
+</html>

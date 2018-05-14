@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../../demos/js/react.development.js"></script>
+        <script src="../../demos/js/react-dom.development.js"></script>
+        <script src="../../demos/js/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">
+            // JSX expressions can be array - recollect we used {this.children} where this.children could be an array of childNodes
+            class ShoppingList extends React.Component {
+                constructor( props ) {
+                    super( props );
+                    this.state = {
+                        items: this.props.items
+                    };
+                }
+
+                componentDidMount() {
+                    setTimeout( () => {
+                        this.setState( prevState => {
+                            prevState.items.unshift( { name: 'Jam', quantity: 4, _id: 15 } );
+                            return {
+                                items: items
+                            }
+                        });
+                    }, 20000);
+                }
+
+                render() {
+                    let { items } = this.state;
+                    let { props } = this.props;
+                    return (
+                        <ul>
+                            {items.map(item => <li>{item.name} - {item.quantity}</li>)}
+                        </ul>
+                    );
+                }
+            }
+            
+            let items = [
+                { name: 'Soap', quantity: 10, _id: 1 },
+                { name: 'Lays chips', quantity: 2, _id: 2 },
+                { name: 'Biscuits', quantity: 5, _id: 3 },
+            ];
+
+            let shoppingList = <ShoppingList items={items} />
+            
+            ReactDOM.render( shoppingList, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

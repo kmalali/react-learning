@@ -1,0 +1,13 @@
+.panel {
+    border: 1px solid crimson;
+    border-radius: 5px;
+}
+
+.panel-heading, .panel-body {
+    padding: 10px;
+}
+
+.panel-heading {
+    background-color: crimson;
+    color: white;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../../demos/js/react.development.js"></script>
+        <script src="../../demos/js/react-dom.development.js"></script>
+        <script src="../../demos/js/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="text/babel">
+            class Timer extends React.Component {
+
+                // initial state is always set in the constructor
+                // before using "this" we need to call super and pass props
+                // constructor is not necessary if we are not using state
+                constructor( props ) {
+                    super( props ); // React.Component's constructor initializes props and few other things on the component instance
+                    this.state = {
+                        time: new Date(), // current time
+                        x : 5
+                    }
+                }
+
+                // called before render() is called - so element is not yet in DOM
+                componentWillMount() {
+                    console.log( 'componentWillMount' );
+                    // debugger; // programmatic breakpoint;
+                }
+
+                // there will be multiple calls to render as we will see
+                render() {
+                    console.log( 'render' );
+                    // debugger;
+
+                    const { props: { title }, state: { time } } = this;
+
+                    return (
+                        <div>
+                            <span>{title}</span>
+                            Current time is <strong>{time.toLocaleTimeString()}</strong>
+                        </div>
+                    );
+                }
+
+                // when element returned in the first call to render gets into the DOM
+                componentDidMount() {
+                    console.log( 'componentDidMount' );
+                    // debugger;
+                    // var that = this; // do his if you prefer normal function definitin and not arrow function
+                    setInterval(() => {
+                        this.setState( // applies changes ON TOP OF current state (and NOT a replacement for current state)
+                            {   // if your new state depends on the previous state, pass a function instead of objecr
+                                time: new Date()
+                            },
+                            () => { // this is called once the asynchronous state change happens
+                                console.log( 'state was updated' );
+                            });
+                    }, 1000);
+                }                
+            }
+
+            ReactDOM.render( <Timer title="IST" />, document.getElementById( 'root' ) );
+
+            // setInterval(
+            //     () => ReactDOM.render( <Timer />, document.getElementById( 'root' ) ), 
+            //     1000
+            // );
+        </script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../../demos/js/react.development.js"></script>
+        <script src="../../demos/js/react-dom.development.js"></script>
+        <script src="../../demos/js/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="text/babel">
+            /**
+             * To execute a function once every time interval...
+             * setInterval( () => console.log( 'hello' ), timeIntervalInMilliseconds )
+             * 
+             * Exercise: Write code to update the 
+             */
+            let els = [];
+
+            function Timer( props ) {
+                let dateTime = (new Date()).toLocaleTimeString();
+                let el = (<div>
+                    <span></span>
+                    Current time is <strong>{dateTime}</strong>
+                </div>);
+                els.push( el );
+                return el;
+            }
+
+            setInterval(
+                () => ReactDOM.render( <Timer />, document.getElementById( 'root' ) ), 
+                1000
+            );
+        </script>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Panel - with React (using JSX)</title>
+        <link rel="stylesheet" href="./css/panel.css">
+        <script src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+            function Panel( props ) {
+                const { title, children } = props;
+                return (
+                    <div className="panel">
+                        <div className="panel-heading">
+                            {title}
+                        </div>
+                        <div className="panel-body">
+                            {children}
+                        </div>
+                    </div>
+                );
+            }
+
+            let panel = (
+                <Panel title="What is react?">
+                    It is a JS library for building SPAs
+                </Panel>
+            );
+
+            ReactDOM.render(
+                panel,
+                document.getElementById( 'root' )
+            );
+        </script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Panel - with React (using JSX)</title>
+        <link rel="stylesheet" href="./css/panel.css">
+        <script src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+            
+            /**
+             * In JSX, multi-word attribute becomes multiWord. Example: colspan become colSpan, tabindex becomes tabIndex. class being a reserved JS keyword and JSX being a JS language extension, "class" attribute translates to "className".
+             * 
+             * This translation is similar to how HTML element attribute names are translated to corresponding DOM node properties in JS.
+             */
+            // Exercise: Rewrite this using React.createElement() calls instead of JSX
+            let panel = (
+                <div className="panel">
+                    <div className="panel-heading">
+                        What is React?
+                    </div>
+                    <div className="panel-body">
+                        It is a JS library, for building user interfaces, created by Facebook.
+                    </div>
+                </div>
+            );
+
+            ReactDOM.render(
+                panel,
+                document.getElementById( 'root' )
+            );
+        </script>
+    </body>
+</html>
