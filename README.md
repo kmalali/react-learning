@@ -40,7 +40,7 @@ __Topic__: React JS
 __Dates__: May 14 - 31, 2018  
 __Time__:  
 Weekdays: 7:00 - 8:30 PM  
-Weekends: 8:00 - 11:45 AM (15 minute break in between)
+Weekends: 8:00 - 11:45 AM (15 minute break in between)  
 Next session: May 16, 2018 at 7:00 PM IST (session on May 15 stands cancelled)
 
 ## How to join the meeting
