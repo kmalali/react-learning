@@ -1,5 +1,5 @@
-# react-harman-mar-2018
-React JS training material for training at __Company name__ (__Dates go in here__) 
+# react-itc-may-14-31-2018
+React JS training material for training (online mode) at ITC Infotech (May 14 - 31 2018) 
 
 ## About React
 React is a web front-end library used to create user interfaces, i.e. a view in MVC architecture. Originally created at Facebook, it is now a free and open-source framework maintained by Facebook, Instagram and some other individual developers and corporations. It is not a full- fledged Single Page Application (SPA) framework unlike Angular, and hence other libraries like React Router and Redux are required to build an SPA. Additionally, a module bundler like Webpack is usually used in a React application.  
@@ -10,12 +10,6 @@ Redux is a state management library. It can be used with any framework or standa
 - Working knowledge of HTML, CSS
 - Good knowledge of JavaScript including object-oriented JS features like object prototypes etc. ES2015 (ES6) knowledge is a plus but not necessary.
 - Bootstrap knowledge is a plus, but not necessary
-
-## Shared folder path
-This path is a shared folder where software for training is available for download
-```
-\\??.??.??.??
-```
 
 ## List of software to be installed before training starts
 * Git CLI and a GitHub account
@@ -43,22 +37,19 @@ This path is a shared folder where software for training is available for downlo
 
 ## Training schedule
 __Topic__: React JS  
-__Dates__: __Dates of training__  
-__Time__: __Timings of training__
-  
-__Breaks__:  
-Lunch break: 12:45 - 1:30 PM  
-Tea breaks: Two tea breaks - one in morning and one in afternoon session, each 10 minutes
+__Dates__: May 14 - 31, 2018  
+__Time__:  
+Weekdays: 7:00 - 8:30 PM
+Weekends: 8:00 - 11:00 AM
 
 ## How to join the meeting
 The training session are recorded using Zoom (https://zoom.us). If you are using Zoom for the first time you will be prompted to download Zoom when you open the meeting link in the browser. Do so and follow the steps in the wizard.
 
-Join from PC, Mac, Linux, iOS or Android: __Meeting link__
+Join from PC, Mac, Linux, iOS or Android: https://zoom.us/j/863290374  
 
 ## Video recordings
 The videos recordings of the session is available at the following location.
 - [__Date__]()
-
 
 ## How to run the server for blogs (Ajax example)
 You need to run the server placed within server/ folder for the examples on Ajax.
@@ -144,7 +135,6 @@ http://localhost:4201/posts/1/comments
         * Introduction to Redux Saga
         * Understanding yield
         * Redux Saga Effects and Interaction between Sagas
-
 
 ## Contact details
 __Email__: puranik@digdeeper.in  
