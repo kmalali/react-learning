@@ -41,7 +41,7 @@ __Dates__: May 14 - 31, 2018
 __Time__:  
 Weekdays: 7:00 - 8:30 PM  
 Weekends: 8:00 - 11:45 AM (15 minute break in between)  
-Next session: May 16, 2018 at 7:00 PM IST (session on May 15 stands cancelled)
+Next session: May 17, 2018 at 7:00 PM IST (session on May 18 stands cancelled)
 
 ## How to join the meeting
 The training session are recorded using Zoom (https://zoom.us). If you are using Zoom for the first time you will be prompted to download Zoom when you open the meeting link in the browser. Do so and follow the steps in the wizard.
