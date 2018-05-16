@@ -51,6 +51,7 @@ Join from PC, Mac, Linux, iOS or Android: https://zoom.us/j/863290374
 ## Video recordings
 The videos recordings of the session is available at the following location.
 - [May 14, 2018](https://s3.amazonaws.com/corporate-trainings/itc-infotech/may-14-31-2018-react/may-14-2018.mp4)
+- [May 16, 2018](https://s3.amazonaws.com/corporate-trainings/itc-infotech/may-14-31-2018-react/may-16-2018.mp4)
 
 ## How to run the server for blogs (Ajax example)
 You need to run the server placed within server/ folder for the examples on Ajax.

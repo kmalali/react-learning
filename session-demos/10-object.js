@@ -25,3 +25,15 @@ console.log( john.name );
 console.log( john['deep-blue'] );
 
 console.log( john.getName() );
+
+john.contact = 'john@example.com'; // add a property anytime to an object
+console.log( john );
+
+delete john.age; // you can remove a property anytime from an object
+console.log( john );
+
+john.getContact = function() {
+    return this.contact;
+};
+
+console.log( john.getContact() );
