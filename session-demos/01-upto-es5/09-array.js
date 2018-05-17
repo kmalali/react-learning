@@ -11,3 +11,12 @@ console.log( x[x.length - 1][0] );
 x[100] = 'sdfsad';
 
 console.log( x );
+
+var numbers = [ 1, 2, 3, 4, 5 ];
+
+var squares = numbers.map(function( item, index ) {
+    console.log( index );
+    return item * item;
+});
+
+console.log( squares );
