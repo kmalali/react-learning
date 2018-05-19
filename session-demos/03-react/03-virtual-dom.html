@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Virtual DOM</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
+
+        <script type="text/babel">
+            let els = [];
+            function renderTime() {
+                // a new React h1 element, a new br React element etc. are created each time this function is called
+                let el = (
+                    <h1>
+                        The time is
+                        <br />
+                        {(new Date()).toTimeString()}
+                    </h1>
+                );
+
+                els.push( el );
+
+                ReactDOM.render( el, document.getElementById( 'root' ) );
+            }
+
+            setInterval( renderTime, 10000 );
+        </script>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Home page</title>
+    </head>
+    <body>
+        <h3>Sum of x and y</h3>
+        <hr />
+        <div>
+            x: <input type="number" id="x" />
+        </div>
+        <div>
+            y: <input type="number" id="y" />
+        </div>
+        <div>
+            Result: <output id="result"></output>
+        </div>
+
+        <!-- Chrome 62+ supports modules -- no other browser supports modules -->
+        <!-- 
+            By default scripts don't have CORS policy (one domain can include script from another domain)
+        -->
+        <!--
+            However scripts treated as modules are bound by CORS policy
+        -->
+        <!--
+        <script src="./index.js" type="module"></script>
+        -->
+        <script type="module">
+            // import { renderResult as render, Person /*, PI */ } from './index.js';
+            import * as Index from './index.js';
+            import adder, { ellipsize } from './index.js'; // the default export can be fetched using any name
+            
+            // function sum() { // dynamic imports not allowed
+            //     import { renderResult } from './index.js';
+            // }
+            
+            let xEl = document.getElementById( 'x' );
+            let yEl = document.getElementById( 'y' );
+            let resultEl = document.getElementById( 'result' );
+                
+            // xEl.oninput = render;
+            // yEl.oninput = render;
+            xEl.oninput = Index.renderResult;
+            yEl.oninput = Index.renderResult;
+
+            let john = new Index.Person( 'John', 32 );
+            console.log( john );
+
+            console.log( adder( 10, 15 ) );
+
+            console.log( ellipsize( 'Est sit dolor amet commodo sit culpa. Laboris fugiat veniam exercitation excepteur dolor enim culpa.', 30 ) );
+        </script>
+
+        <script>
+            console.log( xEl );
+        </script>
+    </body>
+</html>

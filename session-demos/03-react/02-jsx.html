@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        
+        <!-- this is the core React library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js"></script>
+        
+        <!-- Handles DOM manipulation in the browser -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
+
+        <script type="text/babel">
+            /**
+             * JSX = JavaScript XML - Extension to the JS language created for React
+             * It looks like HTML but is actually a JS expression
+             */
+            let span = <span>
+                How are you?
+            </span>;
+
+            let el = <h1 title="Introduction">
+                Hello, world
+                {span} {/* JSX expressions are enclosed within {} */}
+            </h1>;
+            console.log( el );
+
+            let domEl = ReactDOM.render( el, document.getElementById( 'root' ) );
+            console.dir( domEl );
+        </script>
+    </body>
+</html>

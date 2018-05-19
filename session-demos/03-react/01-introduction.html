@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <!-- this is the core React library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js"></script>
+        
+        <!-- Handles DOM manipulation in the browser -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
+
+        <script>
+            /**
+             * 1. name of element
+             * 2. props (attributes in HTML) - pass null for no props
+             * 3. children (child node in HTML)
+             * 
+             * The h1 element that is created IS NOT an h1 DOM node - it is what is called a React element
+             * React elements are plain JS objects
+             */
+            let span = React.createElement( 'span', null, 'How are you?' );
+            let el = React.createElement( 'h1', { title: 'Introduction' }, 'Hello, world', span );
+            console.log( el );
+
+            /**
+             * When a native HTML element is rendered, ReactDOM.render() returns the DOM node of the HTML element created from the React element
+             */
+            let domEl = ReactDOM.render( el, document.getElementById( 'root' ) );
+            console.dir( domEl );
+        </script>
+    </body>
+</html>

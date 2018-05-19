@@ -144,6 +144,7 @@ __Email__: puranik@digdeeper.in
 __Phone__: +91-9448441478
 
 ## References
+- [Exploring JS](http://exploringjs.com/)
 - [Official documentation for React](https://reactjs.org/)
 - [React.js cheatsheet at devhints.io](https://devhints.io/react)
 

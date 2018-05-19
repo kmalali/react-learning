@@ -11,3 +11,6 @@ Given function: greet( message, name ) // log message followed by name - example
 You want a greetGM method: greetGM = bind( greet, 'Good morning' );
 When greetGM is called: greetGM( 'John' ); // prints Good morning John!
 When greetGM is called: greetGM( 'Mary' ); // prints Good morning Mary!
+
+## May 19, 2018
+1. Create a Bootstrap-like panel using React (use createElement as well as JSX).
