@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>JSX Expression - Sample Invoice</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+        <style>
+            .invoice {
+                padding: 5px;
+                border: 1px dotted black;
+            }
+
+            .item {
+                margin: 16px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
+
+        <script type="text/babel">
+            let sum = ( x, y ) => x + y;
+
+            let Invoice = props => {
+                // let { name, price, taxRate } = props.items[0]; // destructuring at work
+                let thankYouNote = <h4 className="text-primary">Thanks for visiting our store. We hope to see you again.</h4>;
+
+                // Method #1 to render an array of items
+                // let arrayOfItemEls = [];
+                // for( let i = 0; i < props.items.length; i++ ) {
+                //     let item = props.items[i];
+                //     let { name, price, taxRate } = item;
+                //     arrayOfItemEls.push(
+                //         <div class="item">
+                //             <div>Base price of {name} : {price}</div>
+                //             <div>{price * taxRate / 100}</div>
+                //             <div>{sum( price, price * taxRate / 100)}</div>
+                //         </div>
+                //     )
+                // }
+                
+                /* Method #1 to Conditionally display some element */
+                // let unusedCouponEl = null;
+                // if( props.showCoupon ) {
+                //     unusedCouponEl = <p>Use code <code>NEW30</code> to get 30% off on your next purchase</p>;
+                // }
+
+                return (
+                    <div className="container invoice">
+                        {/* this is a comment in JSX */}
+                        <div className="text-primary">Invoice number: {100 + 1}</div> { /* literals in JSX expressions */ }
+                        
+                        {/*arrayOfItemEls*/}
+                        { /* Method #2 to render an array of items */ }
+                        {props.items}
+
+                        {thankYouNote}
+                        
+                        {/*unusedCouponEl*/}
+                        { /* Method #2 to Conditionally display some element */ }
+                        {props.showCoupon ? <p>Use code <code>NEW30</code> to get 30% off on your next purchase</p> : null}
+                    </div>
+                );
+            }
+
+            let items = [
+                { name: 'Burger', price: 79, taxRate: 5 },
+                { name: 'French Fries', price: 99, taxRate: 8 },
+                { name: 'Coke float', price: 50, taxRate: 5 }
+            ];
+
+            let invoice = <Invoice items={items} showCoupon={true} />;
+            ReactDOM.render( invoice, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

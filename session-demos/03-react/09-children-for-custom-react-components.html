@@ -1,0 +1,55 @@
+!<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Props for custom panel</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div id="root" class="container"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
+
+        <script type="text/babel">
+            function Panel( props ) {
+                console.log( props ); // props will have children property
+                
+                let panel = (
+                    <div className="panel panel-default">
+                        <div className="panel-heading">{props.title}</div>
+                        <div className="panel-body">
+                            {props.children}
+                        </div>
+                    </div>
+                );
+                return panel;
+            }
+            
+            var titles = [
+                'What is React?',
+                'What is Redux?'
+            ];
+
+            let panels = (
+                <div>
+                    <Panel title={titles[0]}>
+                        <p className="text-primary">
+                            It is a JavaScript library for building user interfaces (views)
+                        </p>
+                        <a href="https://reactjs.org" className="btn btn-primary btn-sm">React website</a>
+                    </Panel>
+                    <Panel title={titles[1]}>
+                        It is a JS librray for maintaining state of an application centrally
+                    </Panel>
+                </div>
+            );
+            console.log( 'panels = ', panels ); // React element of the type Panel (custom component)
+
+            let panelDomEl = ReactDOM.render( panels, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

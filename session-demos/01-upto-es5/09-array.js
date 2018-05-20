@@ -19,4 +19,4 @@ var squares = numbers.map(function( item, index ) {
     return item * item;
 });
 
-console.log( squares );
+console.log( squares ); // [ 1, 4, 9, 16, 25 ]

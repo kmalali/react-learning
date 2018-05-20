@@ -1,0 +1,52 @@
+!<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Props for custom panel</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div id="root" class="container"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
+
+        <script type="text/babel">
+            /**
+             * JSX expressions are enclosed within {}
+             * They can be used to interpolate values of variables, render a React element, render an array of Recat elements etc.
+             */
+            function Panel( props ) {
+                console.log( props ); // the inputs given when creating the element (traditional attributes, but props can take values other than strings - for example title={some_variable_holding_title_value})
+                
+                let panel = (
+                    <div className="panel panel-default">
+                        <div className="panel-heading">{props.title}</div>
+                        <div className="panel-body">
+                            {props.body}
+                        </div>
+                    </div>
+                );
+                return panel;
+            }
+            
+            var titles = [
+                'What is React?',
+                'What is Redux?'
+            ];
+
+            let panel = (
+                <div>
+                    <Panel title={titles[0]} body="It is a JavaScript library for building user interfaces (views)" />
+                    <Panel title={titles[1]} body="It is a JS librray for maintaining state of an application centrally" />
+                </div>
+            );
+            console.log( 'panel = ', panel ); // React element of the type Panel (custom component)
+
+            let panelDomEl = ReactDOM.render( panel, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>
