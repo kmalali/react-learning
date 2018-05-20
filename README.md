@@ -49,7 +49,7 @@ The training session are recorded using Zoom (https://zoom.us). If you are using
 Join from PC, Mac, Linux, iOS or Android: https://zoom.us/j/863290374  
 
 ## Video recordings
-The videos recordings of the session is available at the following location.
+The videos recordings of the sessions are available at the following locations.
 - [May 14, 2018](https://s3.amazonaws.com/corporate-trainings/itc-infotech/may-14-31-2018-react/may-14-2018.mp4)
 - [May 16, 2018](https://s3.amazonaws.com/corporate-trainings/itc-infotech/may-14-31-2018-react/may-16-2018.mp4)
 - [May 17, 2018](https://s3.amazonaws.com/corporate-trainings/itc-infotech/may-14-31-2018-react/may-17-2018.mp4)
