@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Panel using inline styles</title>
+    </head>
+    <body>
+        <div id="root" class="container"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
+
+        <script type="text/babel">
+            let container = {
+                width: '90%',
+                maxWidth: '1024px',
+                margin: '0 auto'
+            }
+
+            let panel = {
+                border: '1px solid olive'
+            }
+
+            let panelHeading = {
+                backgroundColor: 'olive',
+                color: 'white'
+            }
+
+            let commonHeadingBodyStyles = {
+                padding: '10px'
+            }
+
+            panelHeading = Object.assign( {}, panelHeading, commonHeadingBodyStyles );
+            
+            console.log( panelHeading );
+
+            let panelEl = (
+                <div style={panel}>
+                    <div style={panelHeading}>What is React?</div>
+                    <div style={{ padding: 10 }}> {/* px is the default unit - so you can give a number for padding too */}
+                        It is a JavaScript library for building user interfaces (views)
+                    </div>
+                </div>
+            );
+
+            ReactDOM.render( panelEl, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

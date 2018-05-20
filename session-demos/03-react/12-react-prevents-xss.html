@@ -4,18 +4,31 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title></title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+        <title>React prevents Cross-site scripting (XSS)</title>
     </head>
     <body>
-        <div id="root" class="container"></div>
+        <div id="root"></div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
 
         <script type="text/babel">
-            ReactDOM.render( , document.getElementById( 'root' ) );
+            function createMarkup() {
+                return {__html: '<script>alert( "hello" )</script' + '>'};
+            }
+            
+            let userInput = '<script>alert( "hello" )</script' + '>';
+            
+            // let el = (
+            //     <p>
+            //         {userInput}
+            //     </p>
+            // );
+            
+            let el = <p dangerouslySetInnerHTML={createMarkup()} />;
+            
+            ReactDOM.render( el, document.getElementById( 'root' ) );
         </script>
     </body>
 </html>

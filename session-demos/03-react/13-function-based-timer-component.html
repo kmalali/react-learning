@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title></title>
+        <title>Function-based timer component</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     </head>
     <body>
@@ -15,7 +15,22 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
 
         <script type="text/babel">
-            ReactDOM.render( , document.getElementById( 'root' ) );
+            function Timer( props ) {
+                return (
+                    <div>
+                        <h2>{props.message}</h2>
+                        <hr />
+                        {(new Date).toTimeString()}
+                    </div>
+                )
+            }
+
+            // this is not a good way to build a timer
+            // A timer element should (instrinsically) keep track of time and re-render itself
+            setInterval(() => {
+                let timerEl = <Timer message="Local time" />
+                ReactDOM.render( timerEl, document.getElementById( 'root' ) );
+            }, 1000);
         </script>
     </body>
 </html>

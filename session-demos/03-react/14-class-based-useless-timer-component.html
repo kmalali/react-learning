@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Class-based timer component</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div id="root" class="container"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
+
+        <script type="text/babel">
+            class Timer extends React.Component {
+                constructor( props ) {
+                    super( props ); // the React.Component constructor when called sets up props on the timer class object
+                }
+
+                render() {
+                    console.log( 'render() called' );
+                    return (
+                        <div>
+                            <h2>{this.props.message}</h2>
+                            <hr />
+                            {(new Date).toTimeString()}
+                        </div>
+                    );
+                }
+            }
+
+            // this is not a good way to build a timer
+            // A timer element should (instrinsically) keep track of time and re-render itself
+            let instances = [];
+            setInterval(() => {
+                let timerEl = <Timer message="Local time" />;
+                console.log( timerEl ); // the usual React element
+                
+                let timerInstance = ReactDOM.render( timerEl, document.getElementById( 'root' ) );
+                instances.push( timerInstance );
+            }, 1000);
+        </script>
+    </body>
+</html>

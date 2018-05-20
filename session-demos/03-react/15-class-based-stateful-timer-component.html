@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Class-based timer component</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div id="root" class="container"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
+
+        <script type="text/babel">
+            /**
+             * The Timer component shoudl have a state
+             * The state will have the current time
+             * This state will have to be updated every second
+             */
+            class Timer extends React.Component {
+                // constructor is called when the component is created
+                constructor( props ) {
+                    super( props );
+
+                    // initialize the state
+                    this.state = {
+                        currentTime: new Date
+                    };
+                }
+
+                // this method is called after first render() call - i.e. once the component's DOM gets into the browser 
+                componentDidMount() {
+                    setInterval(() => {
+                        // #1: Don't do state changes this way
+                        // this.state = { // This will change the state but React does not get to know about it
+                        //     currentTime: new Date
+                        // };
+
+                        // #2: This is not the way to change state when your new state depends on the current state
+                        // In this case, the new state does not depend on the old state - so it's ok
+                        this.setState({
+                            currentTime: new Date
+                        });
+                    }, 1000);
+                }
+
+                // render is called once after constructor is called and also every time there is an update to the inputs for the component - props / state are the inputs
+                render() {
+                    console.log( 'render() called' );
+                    return (
+                        <div>
+                            <h2>{this.props.message}</h2>
+                            <hr />
+                            {this.state.currentTime.toTimeString()}
+                        </div>
+                    );
+                }
+            }
+        
+            let timerEl = <Timer message="Local time" />;    
+            ReactDOM.render( timerEl, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

@@ -58,7 +58,18 @@
                         
                         {/*arrayOfItemEls*/}
                         { /* Method #2 to render an array of items */ }
-                        {props.items.map(??)} {/* Exercise: Please come up with code to substitute "??" */}
+                        {
+                            props.items.map(function( item ) {
+                                let { name, price, taxRate } = item;
+                                return (
+                                    <div class="item">
+                                        <div>Base price of {name} : {price}</div>
+                                        <div>{price * taxRate / 100}</div>
+                                        <div>{sum( price, price * taxRate / 100)}</div>
+                                    </div>
+                                );
+                            })
+                        }
 
                         {thankYouNote}
                         
