@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div id="root" class="container"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
+
+        <script type="text/babel">
+            function Panel( props ) {
+                return <h1>A Panel</h1>;
+            }
+
+            class Message extends React.Component {
+                constructor( props ) {
+                    super( props );
+                }
+
+                render() {
+                    return (
+                        <h1>
+                            {this.props.heading}
+                            <br />
+                            <small>{this.props.subheading}</small>
+                        </h1>
+                    );
+                }
+            }
+
+            let el1 = <Message heading="Hello, world (1)" subheading="It's a beautiful day" />;
+            let el2 = <Message heading="Hello, world (2)" subheading="It's a beautiful day" />;
+
+            // React elements are immutable
+            // error - props are immutable
+            // el1.props.newProp = 'Some new input to Message element';
+            // el1.type = Panel;
+
+            console.log( el1 );
+
+            ReactDOM.render( 
+                <div>
+                    {el1}
+                    {el2}
+                </div>,
+                document.getElementById( 'root' )
+            );
+        </script>
+    </body>
+</html>

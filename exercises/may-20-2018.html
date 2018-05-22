@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Employees list</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div id="root" class="container"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
+
+        <script type="text/babel">
+            class EmployeeTable extends React.Component {
+                constructor( props ) {
+                    super( props );
+                }
+
+                render() {
+                    return (
+                        <table className="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Emp ID</th>
+                                    <th>Department</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    this.props.list.map(( emp ) => (
+                                        <tr>
+                                            <td>{emp.name}</td>
+                                            <td>{emp.empid}</td>
+                                            <td>{emp.dept}</td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </table>
+                    );
+                }
+            }
+
+            let employeesList = [
+                {
+                    name: 'Ravi',
+                    empid: 1234,
+                    dept: 'IT Infrastructure'
+                },
+                {
+                    name: 'Amar',
+                    empid: 3456,
+                    dept: 'Sales and Marketing'
+                }
+            ];
+
+            let empTbl = <EmployeeTable list={employeesList} />
+
+            ReactDOM.render( empTbl, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>
