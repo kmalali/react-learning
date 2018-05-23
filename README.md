@@ -151,6 +151,11 @@ __Phone__: +91-9448441478
 - [Official documentation for React](https://reactjs.org/)
 - [React.js cheatsheet at devhints.io](https://devhints.io/react)
 
+## Extra references
+- Working with the Babel CLI and using ES6 modules - Please install and use babel-preset-env instead of babel-preset-2015 mentioned in the links.  
+    - [Reference 1 - A blog article](https://blog.revillweb.com/using-es2015-es6-modules-with-babel-6-3ffc0870095b)  
+    - [Reference 2 - A YouTube video](https://www.youtube.com/watch?v=JCK3FXlgTU4)  
+
 ## Copyright notice
 React JS Demos v1.0.0  
 Copyright Prashanth Puranik  
