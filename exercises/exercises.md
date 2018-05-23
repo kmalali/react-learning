@@ -18,3 +18,7 @@ When greetGM is called: greetGM( 'Mary' ); // prints Good morning Mary!
 ## May 20, 2018
 1. Create a EmployeeTable custom component to render the details of all employees passed to it. Create 2 solutions - one solution takes employees object as prop and other as children. The Employee table should be neatly styled.
 2. Create a stateful component that increments a counter every second.
+
+## May 23, 2018
+1. Add a pause button and implement pause functionality. When paused show the text within pause button as resume.
+2. Add a stop button that simply stops and when timer starts it should start from elapsedSeconds = 0

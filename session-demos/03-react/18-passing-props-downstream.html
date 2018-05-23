@@ -15,8 +15,26 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
 
         <script type="text/babel">
-        
-            ReactDOM.render( , document.getElementById( 'root' ) );
+            /**
+             * props can be passed "downstream" - i.e. from parent component to child component.
+             * Heading element is parent and the SubHeading instance is the child
+             */
+            function SubHeading( props ) {
+                return <small>{props.subheading}</small>;
+            }
+
+            function Heading( props ) {
+                return (
+                    <h1>
+                        {props.heading}
+                        <br />
+                        <subHeading subheading={props.subheading} />
+                    </h1>
+                );
+            }
+
+            let heading = <Heading heading="Hello" subheading="How are you?" />;
+            ReactDOM.render( heading, document.getElementById( 'root' ) );
         </script>
     </body>
 </html>
