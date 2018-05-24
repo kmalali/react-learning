@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Lifecycle methods</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div id="root" class="container"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
+
+        <script type="text/babel">
+            /**
+             * Three phases in the life of a React component
+             * 1. Mounting - constructor, componentWillMount, render, componentDidMount
+             * 2. Update - componentWillReceiveProps, shouldComponentUpdate, render
+             * 3. Unmounting
+             */
+            class Heading extends React.Component {
+                constructor( props ) {
+                    super( props );
+                }
+
+                render() {
+                    return <h1>{this.props.title}</h1>
+                }
+            }
+            
+            class SubHeading extends React.Component {
+                constructor( props ) {
+                    super( props );
+                }
+
+                render() {
+                    return <h2>{this.props.subtitle}</h2>
+                }
+            }
+
+            class Message extends React.Component {
+                constructor( props ) {
+                    super( props );
+                    console.log( '[Message] constructor');
+                }
+
+                // state should not be modified here
+                componentWillMount() {
+                    console.log( '[Message] componentWillMount' );
+                }
+
+                render() {
+                    console.log( '[Message] render -- the react element is created and component gets rendered');
+                    return (
+                        <div>
+                            <Heading title={this.props.title} />
+                            <SubHeading subtitle={this.props.subtitle} />
+                        </div>
+                    );
+                }
+
+                // componentDidMount() is the place to do Ajax calls to get initial set of data
+                // safe to manipulate state here - you can call setState() here
+                componentDidMount() {
+                    // debugger;
+                    console.log( '[Message] componentDidMount' );
+                }
+
+                // called when component receives new props
+                componentWillReceiveProps( newProps ) {
+                    console.log( '[Message] componentWillReceiveProps' );
+                    console.log( 'currentProps = ', this.props );
+                    console.log( 'newProps = ', newProps );
+                }
+
+                // gets called before render - called when either state of props change - we can cancel rendering here
+                shouldComponentUpdate( newProps, newState ) {
+                    console.log( 'newState = ', newState );
+                    console.log( 'newProps = ', newProps );
+                    
+                    // Also try returning false instead - it will cancel render
+                    return true; // false cancels render() call ; true means go ahead with render() call
+                    
+                }
+            }
+
+            let el1, el2;
+            el1 = ReactDOM.render( <Message title="Hello" subtitle="How are you?" />, document.getElementById( 'root' ) );
+
+            // props change
+            setTimeout( () => {
+                // this call will not create a new React Component (i.e. Message) instance
+                el2 = ReactDOM.render( <Message title="Hola" subtitle="Howz you?" />, document.getElementById( 'root' ) );
+            }, 5000);
+        </script>
+    </body>
+</html>

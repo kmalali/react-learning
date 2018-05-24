@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Stopwatch</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div id="root" class="container"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
+          
+        <script type="text/babel">
+            /**
+             * How a view looks at any point of time is completely decided by 2 things
+             1. State
+             2. Props
+             */
+            
+            // class FOrm extends React.Component {
+            //     constructor() {
+            //         // set state
+            //         this.state = {
+            //             isBeingSubmitted: false,
+            //             isValid: true
+            //         }
+            //     }
+            // }
+            let statTemp = "";
+            
+            class Timer extends React.Component {
+                constructor( props ) {
+                    super( props );
+                    // set initial state
+                    this.state = {
+                        elapsedSeconds : 0,
+                        status: 'stopped',
+                        isStarted: false
+                    };
+                    this.start = this.start.bind( this );
+                    this.tick = this.tick.bind( this ); 
+                    this.pause = this.pause.bind( this );
+                    this.clear = this.clear.bind(this);
+                    this.reset = this.reset.bind(this);
+                    this.setPauseButton('Pause');
+                   
+                }
+                setPauseButton(buttonValue){
+                    this.buttonValue = buttonValue;
+                }
+                // FOr Methods #1 and #2
+                // hi() {
+                //     alert( 'hello!!' );
+                //     console.log( 'this = ', this );
+                // }
+               
+                tick() {
+                    
+                    if( this.state.status === 'running' ) {
+                        statTemp = setInterval(() => {
+                            // whenever new state depends upon the previous state, you should use the function-version of setState
+                            this.setState(
+                                function( currentState ) {
+                                    return {
+                                        elapsedSeconds: currentState.elapsedSeconds + 1
+                                    };
+                                },
+                                () => { console.log( 'the tick setInterval passed function got called' ); } // callback - called after the state actually changes
+                            );
+                        }, 1000);
+                    }
+                    if( this.state.status === 'pause' ) {
+                       // alert("HERE");
+                        clearInterval(statTemp);
+                        console.log("HERE 2"+this);
+                        // this.setState( function( currentState ) {
+                        //             return {
+                        //                 elapsedSeconds: currentState.elapsedSeconds
+                        //             };
+                        //         }, ()=>{console.log('the tick clear interval function is called')});
+                    }
+                   
+                    if( this.state.status === 'clear' ) {
+                       // alert("HERE");
+                        clearInterval(statTemp);
+                        console.log("HERE 2"+this);
+                        this.setState( function( currentState ) {
+                                    return {
+                                        elapsedSeconds: 0
+                                    };
+                                }, ()=>{console.log('the tick clear interval function is called')});
+                    }
+                    if( this.state.status === 'reset' ) {
+                       // alert("HERE");
+                        clearInterval(statTemp);
+                        console.log("HERE 2"+this);
+                        this.setState( function( currentState ) {
+                                    return {
+                                        elapsedSeconds: 0,
+                                        status: 'running',
+                                        isStarted: true   
+                                    };
+                                }, this.tick);
+                    }
+                }
+                start = () => { // this syntax for class methods is not in ES2015 - it is proposed for future - Babel however supports it and so we can use it
+                    //alert( 'hello!!'+this.state.isStarted );
+                    if(this.state.isStarted){
+                        return;
+                    }
+                    console.log( 'this = ', this );
+                    
+                    // setState is an asynchronous method
+                    this.setState(
+                        {
+                            status: 'running',
+                            isStarted: true
+                        },
+                        this.tick // callback function called when React actually changes the state
+                    );
+                };
+                pause(event){
+                   
+                    if(event.target.value==='Pause'){
+                        console.log( 'this in Pause = ', event.target.value );
+                        this.setState({
+                        status: 'pause',
+                        isStarted: false                        
+                         },this.tick);
+                         this.setPauseButton('Resume');
+                    }else{
+                        console.log( 'this in Resume = ', event.target.value );
+                        this.setState({
+                        status: 'running',
+                        isStarted: true                        
+                         },this.tick);
+                         this.setPauseButton('Pause');
+                    }
+                    
+                }
+                reset(){
+                    console.log( 'this in reset = ', this );
+                    this.setState({
+                        status: 'reset',
+                        isStarted: false   
+                    }, this.tick);
+                }
+                clear(){
+                    console.log('this in clear = ', this);
+                    this.setState({status: 'clear',  isStarted: false  }, this.tick);
+                }
+                render() {
+                    return (
+                        <div className="container">
+                            <h2>Timer</h2>
+                            <hr />
+                            Elapsed seconds: {this.state.elapsedSeconds}
+                            <br /><br />
+                            {
+                                /* Method #1 */
+                                /*
+                                <input type="button" value="Start" class="btn btn-primary btn-sm" onClick={() => { this.hi(); }} />
+                                */
+                            }
+                            {/* Methods #2 and #3 */}
+                            <input type="button" value="Start" className="btn btn-primary active" onClick={this.start} />
+                            &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value={this.buttonValue} className="btn btn-primary" onClick={this.pause} />
+                            &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Clear" className="btn btn-danger" onClick={this.clear} />
+                            
+                        </div>
+                    );
+                }
+            }
+            let timer = <Timer />;
+            ReactDOM.render( timer, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

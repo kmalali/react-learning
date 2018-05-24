@@ -22,3 +22,6 @@ When greetGM is called: greetGM( 'Mary' ); // prints Good morning Mary!
 ## May 23, 2018
 1. Add a pause button and implement pause functionality. When paused show the text within pause button as resume.
 2. Add a stop button that simply stops and when timer starts it should start from elapsedSeconds = 0
+
+## May 24, 2018
+1. Add a plus/minus symbol to the right of panel heading. The - symbol is shown if panel is open, and + is shown if panel is closed.
