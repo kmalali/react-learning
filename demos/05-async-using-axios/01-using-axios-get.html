@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div id="root" class="container"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+        <script src="services/products.js"></script>
+
+        <script type="text/babel">
+            /**
+             * Note: Start the products server (found in server/ folder) before running this demo
+             */
+            class ProductCatalog extends React.Component {
+                constructor( props ) {
+                    super( props );
+
+                    this.state = {
+                        isProductListPage: true,
+                        isProductsLoading: true,
+                        products: [],
+                        isProductReviewsLoading: true,
+                        reviews: [],
+                        isProductDetailsLoading: false,
+                        product: null
+                    };
+
+                    this.navigateToProductListView = this.navigateToProductListView.bind( this );
+                    this.navigateToProductDetailView = this.navigateToProductDetailView.bind( this );
+                    this.fetchProducts = this.fetchProducts.bind( this );
+                    this.fetchProduct = this.fetchProduct.bind( this );
+                    this.fetchReviews = this.fetchReviews.bind( this );
+                }
+
+                fetchProducts() {
+                    this.setState(
+                        {
+                            isProductsLoading: true
+                        },
+                        () => fetchProducts().then( products => this.setState({
+                            isProductsLoading: false,
+                            products: products
+                        }))
+                    );
+                }
+
+                fetchProduct( productId ) {
+                    this.setState(
+                        {
+                            isProductDetailsLoading: true
+                        },
+                        () => fetchProduct( productId ).then( product => this.setState({
+                            isProductDetailsLoading: true,
+                            product: product
+                        }))
+                    );
+                }
+
+                fetchReviews( productId ) {
+                    this.setState(
+                        {
+                            isProductReviewsLoading: true
+                        },
+                        () => fetchReviews( productId ).then( reviews => this.setState({
+                            isProductReviewsLoading: false,
+                            reviews: reviews
+                        }))
+                    );
+                }
+
+                navigateToProductListView() {
+                    this.setState({
+                        isProductListPage: true,
+                    }, this.fetchProducts );
+                }
+
+                navigateToProductDetailView( productId ) {
+                    this.setState({
+                        isProductListPage: false,
+                    }, () => this.fetchProduct( productId ) );
+                }
+
+                render() {
+                    return this.state.isProductListPage ? ( /* product list page */
+                        <div>
+                            <h1>Product Catalog</h1>
+                            <hr />
+                            <table className="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Name</th>
+                                        <th>Code</th>
+                                        <th>Price</th>
+                                        <th>Rating</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        this.state.isProductsLoading ? <tr><td colSpan="5">Loading...</td></tr> : this.state.products.map( product => (
+                                            <tr>
+                                                <td style={{ textAlign: 'center' }}>
+                                                    <img src={product.imageUrl} style={{ width: 32 }} />
+                                                </td>
+                                                <td>
+                                                    <a href="#" onClick={() => this.navigateToProductDetailView( product.id )}>{product.name}</a>
+                                                </td>
+                                                <td>{product.code}</td>
+                                                <td>{product.price}</td>
+                                                <td>{product.starRating}</td>
+                                            </tr>
+                                        ))
+                                     }
+                                </tbody>
+                            </table>
+                        </div>
+                    ) : ( /* product detail page */
+                        this.state.product ? (
+                            <div className="panel panel-primary">
+                                <div className="panel-heading">
+                                    {this.state.product.name}
+                                </div>
+                                <div className="panel-body">
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <img src={this.state.product.imageUrl} className="img-responsive" />
+                                        </div>
+                                        <div className="col-sm-9">
+                                            <h2>{this.state.product.name}</h2>
+                                            {this.state.product.starRating} stars
+                                            <br /><br />
+                                            Product id: {this.state.product.id}
+                                            <br />
+                                            Product code: {this.state.product.code}
+                                            <br />
+                                            Released on: {this.state.product.releaseDate}
+                                            <br /><br />
+                                            <p>{this.state.product.description}</p>
+                                            <br />
+                                            Price: {this.state.product.price}
+                                            <br /><br />
+                                            <button className="btn btn-primary" onClick={this.navigateToProductListView}>Back to product catalog</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ) : null
+                    )
+                }
+
+                componentDidMount() {
+                    this.navigateToProductListView();
+                }
+            }
+            
+            ReactDOM.render( <ProductCatalog />, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

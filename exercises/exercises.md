@@ -25,3 +25,8 @@ When greetGM is called: greetGM( 'Mary' ); // prints Good morning Mary!
 
 ## May 24, 2018
 1. Add a plus/minus symbol to the right of panel heading. The - symbol is shown if panel is open, and + is shown if panel is closed.
+
+## May 25, 2018
+1. Add lifecycle methods to the Heading and SubHeading components and see the order of their execution with respect to the Message element (i.e. Parent element) lifecycle methods. You can also add some dummy state objects to these elements and see the order of lifecycle methods when state object in the elements changes.
+
+2. Make the entire blog page componentized. Create components as you deem fit.
