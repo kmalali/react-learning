@@ -30,3 +30,5 @@ When greetGM is called: greetGM( 'Mary' ); // prints Good morning Mary!
 1. Add lifecycle methods to the Heading and SubHeading components and see the order of their execution with respect to the Message element (i.e. Parent element) lifecycle methods. You can also add some dummy state objects to these elements and see the order of lifecycle methods when state object in the elements changes.
 
 2. Make the entire blog page componentized. Create components as you deem fit.
+
+3. Please find out what event.stopPropagation() does.
