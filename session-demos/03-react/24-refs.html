@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div id="root" class="container"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
+
+        <script type="text/babel">
+            class ContactForm extends React.Component {
+                constructor( props ) {
+                    super( props );
+
+                    this.state = { // this will be in sync with values entered within the input elements
+                        name: '',
+                        phone: '',
+                        message: ''
+                    };
+
+                    this.submitHandler = this.submitHandler.bind( this );
+                    this.inputHandler = this.inputHandler.bind( this );
+                }
+
+                submitHandler( event ) {
+                    event.preventDefault();
+                    // console.log( this.nameNode.value );
+                    // console.log( this.phoneNode.value );
+                    // console.log( this.messageNode.value );
+                    console.log( this.state );
+                }
+
+                inputHandler( inputName ) {
+                    let newState = {};
+                    console.log( this[inputName + 'Node'] );
+                    newState[inputName] = this[inputName + 'Node'].value;
+
+                    this.setState( newState );
+                }
+
+                render() {
+                    return (
+                        <div>
+                            <h1>Contact Form</h1>
+                            <hr />
+                            <form className="form-horizontal" action="/send-message" onSubmit={this.submitHandler}>
+                                <div className="form-group">
+                                    <label for="name" className="control-label col-sm-3">Name</label>
+                                    <div className="col-sm-9">
+                                        <input type="text" name="name" id="name" className="form-control" ref={ node => this.nameNode = node } onChange={this.inputHandler( 'name' )} />
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label for="phone" className="control-label col-sm-3">Phone number</label>
+                                    <div className="col-sm-9">
+                                        <input type="tel" name="phone" id="phone" className="form-control" ref={ node => this.phoneNode = node } onChange={this.inputHandler( 'phone' )} />
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label for="message" className="control-label col-sm-3">Message</label>
+                                    <div className="col-sm-9">
+                                        <textarea type="tel" name="message" id="message" rows="5" className="form-control" ref={ node => this.messageNode = node } onChange={this.inputHandler( 'message' )}></textarea>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <div className="col-sm-offset-3 col-sm-9">
+                                        <input type="submit" value="Send message" className="btn btn-primary" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    );
+                }
+            }
+
+            ReactDOM.render( <ContactForm />, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

@@ -20,24 +20,6 @@
                     super( props );
                 }
 
-                clickHandler( item ) { // this handler requires the item to be passed as an argument
-                    console.log( item );
-                }
-
-                mouseoverHandler( event ) {
-                    console.log( event );
-                    console.log( event.type ); // 'mouseover'
-                    console.log( event.target ); // DOM li node on which the mouseover occured
-                }
-
-                submitHandler( event ) {
-                    if( !confirm( 'Are you sure you want to search on Google?' ) ) {
-                        event.preventDefault();
-                    }
-
-                    // Exercise: Please find out what event.stopPropagation() does
-                }
-
                 render() {
                     return (
                         <div>
@@ -46,19 +28,11 @@
                             <ul>
                             {
                                 this.props.items.map( item => (
-                                    /* Method #1 */
-                                    <li onClick={this.clickHandler.bind( null, item )}>{item.name} -- {item.quantity}</li>
-                                    
-                                    /* Method #2 */
-                                    /*<li onClick={() => this.clickHandler( item )} onMouseOver={this.mouseoverHandler}>{item.name} -- {item.quantity}</li>*/
+                                    /* key should be something unique across all iterated items */
+                                    <li key={item.name}>{item.name} -- {item.quantity}</li>
                                 ))
                             }
                             </ul>
-
-                            <form onSubmit={this.submitHandler} action="https://www.google.com/search" method="get">
-                                <input type="text" name="q"/>
-                                <input type="submit" value="Submit" />
-                            </form>
                         </div>
                     );
                 }
@@ -69,10 +43,14 @@
                 { name: 'Lemons', quantity: 6 },
                 { name: 'Lays chips', quantity: 1 },
             ];
+            
+            ReactDOM.render( <ShoppingList title="Groceries list" items={items} />, document.getElementById( 'root' ) );
 
-            let shoppingList = <ShoppingList title="Groceries list" items={items} />
-
-            ReactDOM.render( shoppingList, document.getElementById( 'root' ) );
+            console.log
+            
+                items.unshift( { name: 'Heinz Tomato Ketchup', quantity: 2 } );
+                ReactDOM.render( <ShoppingList title="Groceries list" items={items} />, document.getElementById( 'root' ) );
+            }, 20000);
         </script>
     </body>
 </html>

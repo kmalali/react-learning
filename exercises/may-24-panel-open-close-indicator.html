@@ -1,0 +1,88 @@
+!<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Panel with open/close indicator</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div id="root" class="container"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js"></script>
+
+        <script type="text/babel">
+            class PanelHeading extends React.Component {
+                constructor( props ) {
+                    super( props );
+                }
+
+                render() {
+                    return (
+                        <div className="panel-heading" onClick={this.props.toggleState} style={{ cursor: 'pointer' }}>
+                            {this.props.title}
+                            <span className="pull-right">{this.props.isOpen ? '-' : '+'}</span>
+                        </div>
+                    );
+                }
+            }
+            
+            class PanelBody extends React.Component {
+                constructor( props ) {
+                    super( props );
+                }
+
+                render() {
+                    let el = null;
+                    if( this.props.isOpen ) {
+                        el = <div className="panel-body">{this.props.children}</div>
+                    }
+                    return el;
+                }
+            }
+
+            class Panel extends React.Component {
+                constructor( props ) {
+                    super( props );
+
+                    this.state = {
+                        isOpen: true
+                    };
+
+                    this.toggleState = this.toggleState.bind( this );
+                }
+
+                toggleState() {
+                    this.setState( currentState => {
+                        return {
+                            isOpen: !currentState.isOpen
+                        };
+                    });
+                }
+
+                render() {
+                    console.log( '[inside Panel render()] this.state = ', this.state );
+                    let panel = (
+                        <div className="panel panel-default">
+                            <PanelHeading title={this.props.heading} toggleState={this.toggleState} isOpen={this.state.isOpen} />
+                            <PanelBody isOpen={this.state.isOpen}>
+                                {this.props.children}
+                            </PanelBody>
+                        </div>
+                    );
+                    return panel;
+                }
+            }
+
+            ReactDOM.render(
+                <Panel heading='What is React?'>
+                    It is a JS library for building the view of a web application
+                </Panel>,
+                document.getElementById( 'root' )
+            );
+        </script>
+    </body>
+</html>
