@@ -41,7 +41,7 @@ __Dates__: May 14 - 31, 2018
 __Time__:  
 _Weekdays_: 7:00 - 8:30 PM  
 _Weekends_: 8:00 - 11:45 AM (15 minute break in between)  
-__Next session__: May 26, 2018 at 8:00 AM IST   
+__Next session__: May 28, 2018 at 7:00 PM IST (session on May 27 stands cancelled)  
 
 ## How to join the meeting
 The training session are recorded using Zoom (https://zoom.us). If you are using Zoom for the first time you will be prompted to download Zoom when you open the meeting link in the browser. Do so and follow the steps in the wizard.
@@ -59,6 +59,7 @@ The videos recordings of the sessions are available at the following locations.
 - [May 23, 2018](https://s3.amazonaws.com/corporate-trainings/itc-infotech/may-14-31-2018-react/may-23-2018.mp4)
 - [May 24, 2018](https://s3.amazonaws.com/corporate-trainings/itc-infotech/may-14-31-2018-react/may-24-2018.mp4)
 - [May 25, 2018](https://s3.amazonaws.com/corporate-trainings/itc-infotech/may-14-31-2018-react/may-25-2018.mp4)
+- [May 26, 2018](https://s3.amazonaws.com/corporate-trainings/itc-infotech/may-14-31-2018-react/may-26-2018.mp4)
 
 ## How to run the server for blogs (Ajax example)
 You need to run the server placed within server/ folder for the examples on Ajax.
