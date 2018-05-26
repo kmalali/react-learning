@@ -159,6 +159,12 @@ __Phone__: +91-9448441478
     - [Reference 1 - A blog article](https://blog.revillweb.com/using-es2015-es6-modules-with-babel-6-3ffc0870095b)  
     - [Reference 2 - A YouTube video](https://www.youtube.com/watch?v=JCK3FXlgTU4)  
 - [Bootstrap 3 Cheatsheet](https://bootstrapcreative.com/resources/bootstrap-3-css-classes-index/)
+- [Chrome Developer Tools Documentation - you will find more info on performance analysis, memory profiling etc.](https://developers.google.com/web/tools/chrome-devtools/)
+
+## Todos (for instructor)
+- Error handling related specifics
+- Performance and memory leaks related tips
+- INtegrating create-react-app into development flow (say Java-based)
 
 ## Copyright notice
 React JS Demos v1.0.0  

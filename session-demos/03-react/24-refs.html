@@ -22,11 +22,22 @@
                     this.state = { // this will be in sync with values entered within the input elements
                         name: '',
                         phone: '',
-                        message: ''
+                        message: 'Hello'
                     };
 
                     this.submitHandler = this.submitHandler.bind( this );
                     this.inputHandler = this.inputHandler.bind( this );
+                }
+
+                componentDidMount() {
+                    setTimeout( () => {
+                        this.setState(
+                            {
+                                name: 'Mary'
+                            },
+                            () => console.log( this.state )
+                        );
+                    }, 10000);
                 }
 
                 submitHandler( event ) {
@@ -34,12 +45,11 @@
                     // console.log( this.nameNode.value );
                     // console.log( this.phoneNode.value );
                     // console.log( this.messageNode.value );
-                    console.log( this.state );
+                    console.log( this.state ); // in a real-life app we would validate the input values stored in state and send to server if all good
                 }
 
                 inputHandler( inputName ) {
                     let newState = {};
-                    console.log( this[inputName + 'Node'] );
                     newState[inputName] = this[inputName + 'Node'].value;
 
                     this.setState( newState );
@@ -54,19 +64,25 @@
                                 <div className="form-group">
                                     <label for="name" className="control-label col-sm-3">Name</label>
                                     <div className="col-sm-9">
-                                        <input type="text" name="name" id="name" className="form-control" ref={ node => this.nameNode = node } onChange={this.inputHandler( 'name' )} />
+                                        <input type="text" name="name" id="name" className="form-control" ref={ node => this.nameNode = node } onChange={this.inputHandler.bind( this, 'name' )} value={this.state.name} />
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <label for="phone" className="control-label col-sm-3">Phone number</label>
                                     <div className="col-sm-9">
-                                        <input type="tel" name="phone" id="phone" className="form-control" ref={ node => this.phoneNode = node } onChange={this.inputHandler( 'phone' )} />
+                                        <input type="tel" name="phone" id="phone" className="form-control" ref={ node => this.phoneNode = node } onChange={this.inputHandler.bind( this, 'phone' )} value={this.state.phone} />
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <label for="message" className="control-label col-sm-3">Message</label>
                                     <div className="col-sm-9">
-                                        <textarea type="tel" name="message" id="message" rows="5" className="form-control" ref={ node => this.messageNode = node } onChange={this.inputHandler( 'message' )}></textarea>
+                                        <textarea type="tel" name="message" id="message" rows="5" className="form-control" ref={ node => this.messageNode = node } onChange={this.inputHandler.bind( this, 'message' )} value={this.state.message}></textarea>
+                                        { /* using defaultValue for initial value (uncontrolled component - those not bound to state */ }
+                                        {
+                                            /*
+                                            <textarea type="tel" name="message" id="message" rows="5" className="form-control" ref={ node => this.messageNode = node } onChange={this.inputHandler.bind( this, 'message' )} defaultValue="Hello" value={this.state.message}></textarea>
+                                            */
+                                        }
                                     </div>
                                 </div>
                                 <div className="form-group">
