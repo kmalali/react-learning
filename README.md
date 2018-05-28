@@ -161,6 +161,10 @@ __Phone__: +91-9448441478
     - [Reference 2 - A YouTube video](https://www.youtube.com/watch?v=JCK3FXlgTU4)  
 - [Bootstrap 3 Cheatsheet](https://bootstrapcreative.com/resources/bootstrap-3-css-classes-index/)
 - [Chrome Developer Tools Documentation - you will find more info on performance analysis, memory profiling etc.](https://developers.google.com/web/tools/chrome-devtools/)
+- [Event loop - Video 1](https://www.youtube.com/watch?v=8aGhZQkoFbQ)  
+- [Event loop - Video 2](https://www.youtube.com/watch?v=QyUFheng6J0)  
+- [Promises in Depth](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261)
+
 
 ## Todos (for instructor)
 - Error handling related specifics
