@@ -32,3 +32,6 @@ When greetGM is called: greetGM( 'Mary' ); // prints Good morning Mary!
 2. Make the entire blog page componentized. Create components as you deem fit.
 
 3. Please find out what event.stopPropagation() does.
+
+## May 29, 2018
+Add The reviewws for a product below the product details (in the product detail view). Also add a "submit a review form" that has all review details. Adding a review should show the review in the reviews section
