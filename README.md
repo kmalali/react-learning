@@ -62,6 +62,7 @@ The videos recordings of the sessions are available at the following locations.
 - [May 26, 2018](https://s3.amazonaws.com/corporate-trainings/itc-infotech/may-14-31-2018-react/may-26-2018.mp4)
 - [May 28, 2018](https://s3.amazonaws.com/corporate-trainings/itc-infotech/may-14-31-2018-react/may-28-2018.mp4)
 - [May 29, 2018](https://s3.amazonaws.com/corporate-trainings/itc-infotech/may-14-31-2018-react/may-29-2018.mp4)
+- [May 30, 2018](https://s3.amazonaws.com/corporate-trainings/itc-infotech/may-14-31-2018-react/may-30-2018.mp4)
 
 ## How to run the server for blogs (Ajax example)
 You need to run the server placed within server/ folder for the examples on Ajax.
