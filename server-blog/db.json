@@ -49,12 +49,6 @@
       "text": "<p>Duis elit elit consectetur nostrud tempor deserunt qui do. Consectetur ea consequat aute quis dolore proident do. Veniam nostrud excepteur officia sint labore consequat elit velit ad ullamco minim. Exercitation fugiat non eiusmod reprehenderit velit. In laboris voluptate pariatur aute nulla.</p><p>Non id quis irure magna Lorem. Ex deserunt sit et consequat in non laborum. Ut aliquip proident incididunt ullamco fugiat in labore irure et commodo. Nostrud sunt in irure reprehenderit dolore. Velit ea nostrud laborum excepteur ipsum.</p><p>Cillum non ad laboris ut sit. Aute eu elit elit labore nostrud sint irure amet. Elit aliqua quis commodo in deserunt nisi incididunt velit consequat culpa id enim non. Ullamco ea minim eiusmod commodo Lorem culpa id sunt laborum ut ea esse in.</p><p>Voluptate cupidatat ad deserunt excepteur cupidatat dolor deserunt qui nostrud. Tempor labore do elit sit officia. Nulla adipisicing excepteur cupidatat nulla ullamco est Lorem cillum eu id. Aute sunt nostrud voluptate sint ullamco dolor laborum in laboris. Do ullamco laborum eiusmod ut. Aliqua in ipsum veniam eiusmod magna ad enim.</p>"
     },
     {
-      "id": 6
-    },
-    {
-      "id": 7
-    },
-    {
       "authorId": 2,
       "title": "Advanced JS techniques",
       "text": "Esse magna incididunt excepteur amet aliqua dolore mollit officia. Ipsum ex cillum quis aliqua voluptate et esse do non excepteur pariatur in est. Culpa duis cupidatat aliquip irure dolor enim. Duis reprehenderit labore ut elit elit velit elit irure.",
@@ -102,13 +96,6 @@
       "text": "I am broke. I am going to save some money soon and going there on a lng vacation",
       "postId": "1",
       "id": 5
-    },
-    {
-      "name": "Prashanth",
-      "title": "I should soon visit this place",
-      "text": "<strong>I am broke</strong>. I am going to save some money soon and going there on a lng vacation",
-      "postId": "1",
-      "id": 6
     }
   ]
 }

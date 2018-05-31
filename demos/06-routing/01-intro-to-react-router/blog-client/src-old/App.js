@@ -9,7 +9,7 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <div className="container">
+                <div>
                     <Master />
                     <Route path="/" exact render={() => (
                         <h1>
