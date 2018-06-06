@@ -35,3 +35,6 @@ When greetGM is called: greetGM( 'Mary' ); // prints Good morning Mary!
 
 ## May 29, 2018
 Add The reviewws for a product below the product details (in the product detail view). Also add a "submit a review form" that has all review details. Adding a review should show the review in the reviews section
+
+## June 2, 2018
+Create a stateless Counter React compoment and use redux to store the counter value (state). Use ReactDOM.render() inside an appStore.subscribe().

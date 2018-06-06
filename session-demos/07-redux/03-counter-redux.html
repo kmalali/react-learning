@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Counter app | Redux</title>
+    </head>
+    <body>
+        <input type="button" id="btn-increment" value="Increment" onclick="increment()" />
+        <input type="button" id="btn-increment" value="Decrement" onclick="decrement()" />
+
+        <span id="counter"></span>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.0/redux.min.js"></script>
+
+        <script>
+            // Action constants
+            const INCREMENT = 'INCREMENT';
+            const DECREMENT = 'DECREMENT';
+            
+            // the reducer is a "pure function"
+            // 1. it does not use global variables
+            // 2. it does not modify global variables
+            // 3. it gives the same output for same inputs always
+            // 4. it does not modify any inputs
+            let counterReducer = ( curState = { counter: 0 }, action ) => {
+                let newState;
+
+                switch( action.type ) {
+                    case INCREMENT:
+                        newState = { ...curState, counter: curState.counter + 1 };
+                        break;
+                    case DECREMENT:
+                        newState = { ...curState, counter: curState.counter - 1 };
+                        break;
+                    default:
+                        newState = curState;
+                }
+
+                return newState;
+            };
+
+            let appStore = Redux.createStore(
+                counterReducer,
+                { counter: 0 } /* initial state */
+            );
+
+            // Action creators are functions that create Action objects
+            let incrementAction = () => ({
+                type: INCREMENT
+            });
+            
+            let decrementAction = () => ({
+                type: DECREMENT
+            });
+
+            let increment = () => {
+                appStore.dispatch( incrementAction() );
+            }
+
+            let decrement = () => {
+                appStore.dispatch( decrementAction() );
+            };
+
+            let counterEl = document.getElementById( 'counter' );
+            
+
+            let renderCounter = () => document.getElementById( 'counter' ).innerText = appStore.getState().counter;
+
+            appStore.subscribe( () => {
+                console.log( appStore.getState() );
+                renderCounter();
+            });
+
+            renderCounter();
+        </script>
+    </body>
+</html>
